@@ -1,0 +1,1 @@
+export const Environment = "."+ import.meta.env.APP_ENV || '';

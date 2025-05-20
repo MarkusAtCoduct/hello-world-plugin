@@ -1,0 +1,96 @@
+{
+  "manifestVersion": "1.0.0",
+  "version": "1.0.0",
+  "name": {
+    "short": "Hello World",
+    "full": "The official Hello World Plugin for Demo"
+  },
+  "description": {
+    "short": "Lorem ipsum.",
+    "full": "Minions ipsum gelatooo uuuhhh para tú bappleees para tú tank yuuu! Gelatooo po kass. Bappleees poopayee tulaliloo pepete belloo! Wiiiii."
+  },
+  "defaultLocale": "de-DE",
+  "locales": {
+    "de-DE": {
+      "key1": "abc"
+    },
+    "en": {
+      "key1": "abc"
+    }
+  },
+  "icon": {
+    "light": "https://demogmbh.com/assets/logo-light.svg",
+    "dark": "https://demogmbh.com/assets/logo-dark.svg"
+  },
+  "communication": {
+    "supportUrl": "https://demogmbh.com/support-for-plugin-xy/__ACTIVE_LOCALE__/",
+    "guideUrl": "https://demogmbh.com/guide-for-plugin-xy?lang=__ACTIVE_LOCALE__"
+  },
+  "legal": {
+    "gdprRequestUrl": "https://demogmbh.com/gdpr/request",
+    "gdprDeleteUrl": "https://demogmbh.com/gdpr/delete",
+    "privacyUrl": "https://demogmbh.com/privacy",
+    "termsOfUseUrl": "https://demogmbh.com/terms-of-use"
+  },
+  "lifecycle": {
+    "connectUrl": "https://jtl.integrations.demogmbh.com/lifecycle/connect",
+    "disconnectUrl": "https://jtl.integrations.demogmbh.com/lifecycle/disconnect"
+  },
+  "requirements": {
+    "minCloudApiVersion": "version12"
+  },
+  "capabilities": {
+    "hub": {
+      "appLauncher": {
+        "redirectUrl": "http://localhost:50142/"
+      }
+    },
+    "erp": {
+      "headless": {
+        "url": "http://localhost:50142/?capability=erp-headless"
+      },
+      "menuItems": [
+        {
+          "name": "Demo GmbH Overview",
+          "url": "https://jtl.integrations.demogmbh.com/wawi/pages/home"
+        },
+        {
+          "name": "Demo GmbH Features",
+          "url": "https://jtl.integrations.demogmbh.com/wawi/pages/features",
+          "children": [
+            {
+              "name": "AI",
+              "children": [
+                {
+                  "name": "Image generation",
+                  "url": "https://jtl.integrations.demogmbh.com/wawi/pages/features/ai/image"
+                },
+                {
+                  "name": "Text generation",
+                  "url": "https://jtl.integrations.demogmbh.com/wawi/pages/features/ai/text"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tabs": [
+        {
+          "context": "productDetail",
+          "name": "Demo data",
+          "url": "https://jtl.integrations.demogmbh.com/wawi/tabs/product/detail",
+          "features": ["details:full", "pricing:write"]
+        },
+        {
+          "context": "customerDetail",
+          "name": "Demo data",
+          "url": "https://jtl.integrations.demogmbh.com/wawi/tabs/customer/detail",
+          "features": ["details:write", "address:read"]
+        }
+      ],
+      "api": {
+        "scopes": ["productRead", "productDelete"]
+      }
+    }
+  }
+}
