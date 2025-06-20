@@ -12,6 +12,7 @@
   "dependencies": {
     "@jtl-software/platform-plugins-core": "0.0.0-dev.eae5a78",
     "@jtl-software/platform-ui-react": "^0.16.2",
+    "@jtl/internal-library-react": "^1.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
