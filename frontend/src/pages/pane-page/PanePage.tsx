@@ -1,26 +1,30 @@
+import { Button, Input, Stack, Text } from '@jtl-software/platform-ui-react';
 import { useState } from 'react';
-import IErpPageProps from './IPanePageProps';
+import IPanePageProps from './IPanePageProps';
 
-const ErpPage: React.FC<IErpPageProps> = ({ pluginBridge }) => {
-  const [customer, setCustomer] = useState<string | null>(null);
+const PanePage: React.FC<IPanePageProps> = ({ appBridge }) => {
+  const [customer, setCustomer] = useState<string | undefined>(undefined);
 
-  pluginBridge.subscribe('CustomerChanged', (data: unknown) => {
-    setCustomer(data.customerId);
+  appBridge.event.subscribe('CustomerChanged', (data: unknown) => {
+    return new Promise<void>((resolve) => {
+      setCustomer((data as { customerId: string }).customerId);
+      resolve();
+    });
   });
 
   const handleGetCurrentCustomer = () => {
-    pluginBridge.callMethod("getCurrentCustomerId").then((customerId: string) => {
-      setCustomer(customerId);
+    appBridge.method.call("getCurrentCustomerId").then((customerId) => {
+      setCustomer(customerId as string);
     });
   };
 
   return (
-    <div>
-      <h1>PANE APP</h1>
-      <div>{customer}</div>
-      <button onClick={handleGetCurrentCustomer}>Get Current Customer</button>
-    </div>
+    <Stack spacing='4' direction='column'>
+      <Text align='center' type='h2'>PANE APP</Text>
+      <Input disabled value={customer} />
+      <Button variant='outline' onClick={handleGetCurrentCustomer} label='Get Current Customer' />
+    </Stack>
   );
 };
 
-export default ErpPage;
+export default PanePage;

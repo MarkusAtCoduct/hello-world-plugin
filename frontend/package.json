@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@jtl-software/platform-plugins-core": "0.0.0-dev.eae5a78",
+    "@jtl-software/cloud-apps-core": "^0.0.0-dev.4371b24",
+    "@jtl-software/platform-plugins-core": "0.0.0-dev.2e16211",
     "@jtl-software/platform-ui-react": "^0.16.2",
+    "@tailwindcss/vite": "^4.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

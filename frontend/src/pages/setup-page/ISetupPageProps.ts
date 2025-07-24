@@ -1,5 +1,6 @@
-import { PluginBridge } from '@jtl/platform-plugins-core';
+import { AppBridge } from '@jtl-software/cloud-apps-core';
+
 
 export default interface ISetupPageProps {
-  pluginBridge: PluginBridge;
+  appBridge: AppBridge;
 }

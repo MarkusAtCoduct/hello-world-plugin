@@ -20,10 +20,16 @@ console.log("Environment", Environment);
  */
 const myMappingDatabase = new Map<string, string>();
 
+app.post("/test", async (req, res) => {
 
+  res.send(req.body);
+  res.end();
+});
 app.get("/", async (_req, res) => {
   res.send("Hello from TypeScript + Express!");
 });
+
+
 
 app.post("/connect-tenant", async (req, res) => {
   const { sessionToken } = req.body;

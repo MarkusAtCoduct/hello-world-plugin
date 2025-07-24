@@ -1,12 +1,12 @@
 import { useCallback, useState } from 'react';
 import ISetupPageProps from './ISetupPageProps';
 
-const SetupPage: React.FC<ISetupPageProps> = ({ pluginBridge }) => {
+const SetupPage: React.FC<ISetupPageProps> = ({ appBridge }) => {
   const [isLoading, setIsLoading] = useState(false);
   const handleSetupCompleted = useCallback(async (): Promise<void> => {
     try {
       setIsLoading(true);
-      const sessionToken = await pluginBridge.callMethod('getSessionToken');
+      const sessionToken = await appBridge.method.call('getSessionToken');
       // call your backend to verify the session token and extract the payload
       const response = await fetch('http://localhost:50143/connect-tenant', {
         method: 'POST',
@@ -23,18 +23,18 @@ const SetupPage: React.FC<ISetupPageProps> = ({ pluginBridge }) => {
 
       // handle the response from your backend
       if (response.ok) {
-        await pluginBridge.callMethod('setupCompleted');
+        await appBridge.method.call('setupCompleted');
       }
     } finally {
       setIsLoading(false);
     }
-  }, [pluginBridge]);
+  }, [appBridge]);
 
   if (isLoading) {
     return (
       <div>
         <h1>Loading...</h1>
-        <p>Please wait while we are setting up your plugin</p>
+        <p>Please wait while we are setting up your app</p>
       </div>
     );
   }

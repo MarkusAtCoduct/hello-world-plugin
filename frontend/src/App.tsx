@@ -1,4 +1,4 @@
-import { createPluginBridge, PluginBridge } from '@jtl-software/platform-plugins-core';
+import { AppBridge, createAppBridge } from '@jtl-software/cloud-apps-core';
 import { useEffect, useState } from 'react';
 import './App.css';
 import { ErpPage, SetupPage } from './pages';
@@ -8,25 +8,25 @@ type AppMode = 'setup' | 'erp' | 'pane';
 
 const App: React.FC = () => {
   const mode: AppMode = location.pathname.substring(1) as AppMode;
-  const [pluginBridge, setPluginBridge] = useState<PluginBridge | undefined>(undefined);
+  const [appBridge, setAppBridge] = useState<AppBridge | undefined>(undefined);
 
   useEffect((): void => {
-    console.log('[HelloWorldPlugin] createPluginBridge...');
-    createPluginBridge().then(bridge => {
-      console.log('[HelloWorldPlugin] bridge created!');
-      bridge.callMethod('test', 'Hello, world!');
-      bridge.callMethod('test2', 'Hello, world!', 53);
-      setPluginBridge(bridge);
+    console.log('[HelloWorldApp] createAppBridge...');
+    createAppBridge().then(bridge => {
+      console.log('[HelloWorldApp] bridge created!');
+      bridge.method.call('test', 'Hello, world!');
+      bridge.method.call('test2', 'Hello, world!', 53);
+      setAppBridge(bridge);
     });
   }, []);
 
   switch (mode) {
     case 'setup':
-      return pluginBridge && <SetupPage pluginBridge={pluginBridge} />;
+      return appBridge && <SetupPage appBridge={appBridge} />;
     case 'erp':
-      return pluginBridge && <ErpPage pluginBridge={pluginBridge} />;
+      return appBridge && <ErpPage appBridge={appBridge} />;
     case 'pane':
-      return pluginBridge && <PanePage pluginBridge={pluginBridge} />;
+      return appBridge && <PanePage appBridge={appBridge} />;
     default:
       return (
         <div>

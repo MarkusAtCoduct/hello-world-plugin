@@ -1,0 +1,67 @@
+{
+  "manifestVersion": "1.0.0",
+  "version": "1.0.0",
+  "name": {
+    "short": "Hello World example",
+    "full": "Hello World example"
+  },
+  "description": {
+    "short": "Official Hello World example.",
+    "full": "This is the official Hello World example."
+  },
+  "defaultLocale": "de-DE",
+  "locales": {
+    "de-DE": {
+      "key1": "abc"
+    },
+    "en": {
+      "key1": "abc"
+    }
+  },
+  "icon": {
+    "light": "https://hub.jtl-cloud.com/assets/image-placeholder.png",
+    "dark": "https://hub.jtl-cloud.com/assets/image-placeholder.png"
+  },
+  "communication": {
+    "supportUrl": "https://example.com/support-for-plugin-xy/__ACTIVE_LOCALE__/",
+    "guideUrl": "https://example.com/guide-for-plugin-xy?lang=__ACTIVE_LOCALE__"
+  },
+  "legal": {
+    "gdprRequestUrl": "https://example.com/gdpr/request",
+    "gdprDeleteUrl": "https://example.com/gdpr/delete",
+    "privacyUrl": "https://example.com/privacy",
+    "termsOfUseUrl": "https://example.com/terms-of-use"
+  },
+  "lifecycle": {
+    "setupUrl": "http://localhost:50142/setup",
+    "connectUrl": "https://jtl.integrations.example.com/lifecycle/connect",
+    "disconnectUrl": "https://jtl.integrations.example.com/lifecycle/disconnect"
+  },
+  "capabilities": {
+    "hub": {
+      "appLauncher": {
+        "redirectUrl": "http://localhost:50142/erp"
+      }
+    },
+    "erp": {
+      "headless": {
+        "url": "https://jtl.integrations.example.com/erp"
+      },
+      "menuItems": [
+        {
+          "id": "<MENU ITEM ID>",
+          "name": "<MENU ITEM NAME>",
+          "url": "http://localhost:50142/erp"
+        }
+      ], 
+      "pane": [
+      {
+        "url": "http://localhost:50142/pane",
+        "title": "Test Pane",
+        "context": "customers",
+        "matchChildContext": true
+      }
+    ]
+    }
+  }
+}
